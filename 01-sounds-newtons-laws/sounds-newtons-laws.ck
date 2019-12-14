@@ -3,18 +3,12 @@
 /*
 * A short description of newton's laws:
 *
-* Force: An object remains in constant 
-* movement until is moved by a force. 
-* If is in repose remains in repose.
+* -Force: An object remains in constant movement until is moved by a force. If is in repose remains in repose.
 *
-* Acceleration: Every force create and
-* acceleration that is proportional to
-* mass of a body. f = m*a 
+* -Acceleration: Every force create and acceleration that is proportional to mass of a body. f = m*a 
 *
-* Action-Reaction: Every force is an 
-* action that create an equal force 
-* (reaction) that go in the opposite
-* direction to the first force. 
+* -Action-Reaction: Every force is an action that create an equal force (reaction) that go in the opposite
+*  direction to the first force. 
 */ 
 
 // Sound chain
@@ -32,45 +26,67 @@ Wurley piano => dac;
  7,6,5,1,0,9,4,6,1,
  7,7,1,1,2,8,6,5,7,
  4,6,3,6,8] @=> int pattern[];
+
+// Tempos
+0.1::second => dur tempo_1;
+0.2::second => dur tempo_2;
+0.3::second => dur tempo_3;
+0.4::second => dur tempo_4;
+0.5::second => dur tempo_5;
+0.6::second => dur tempo_6;
+0.7::second => dur tempo_7;
+0.8::second => dur tempo_8;
+0.9::second => dur tempo_9;
  
-0.3::second => dur tempo;
- 
-function void playSounds() {
-    0 => int counter; 
-    while (counter < pattern.cap()) {
-        if (pattern[counter] == 0) {
-            Std.mtof(notes[0]) => piano.freq;
-        } else if (pattern[counter] == 1) {
-            Std.mtof(notes[1]) => piano.freq;
-        } else if (pattern[counter] == 2) {
-            Std.mtof(notes[2]) => piano.freq;
-        } else if (pattern[counter] == 3) {
-            Std.mtof(notes[3]) => piano.freq;
-        } else if (pattern[counter] == 4) {
-            Std.mtof(notes[4]) => piano.freq;
-        } else if (pattern[counter] == 5) {
-            Std.mtof(notes[5]) => piano.freq;
-        } else if (pattern[counter] == 6) {
-            Std.mtof(notes[6]) => piano.freq;
-        } else if (pattern[counter] == 7) {
-            Std.mtof(notes[7]) => piano.freq;
-        } else if (pattern[counter] == 8) {
-            Std.mtof(notes[8]) => piano.freq;
-        } else {
-            Std.mtof(notes[9]) => piano.freq;
-            
+function void playNotes() {
+    0 => int cicle;
+    while (cicle < 2) {
+        0 => int counter; 
+        while (counter < pattern.cap()) {
+            if (pattern[counter] == 0) {
+                Std.mtof(notes[0]) => piano.freq;
+                tempo(tempo_9);
+            } else if (pattern[counter] == 1) {
+                Std.mtof(notes[1]) => piano.freq;
+                tempo(tempo_7);
+            } else if (pattern[counter] == 2) {
+                Std.mtof(notes[2]) => piano.freq;
+                tempo(tempo_5);
+            } else if (pattern[counter] == 3) {
+                Std.mtof(notes[3]) => piano.freq;
+                tempo(tempo_3);
+            } else if (pattern[counter] == 4) {
+                Std.mtof(notes[4]) => piano.freq;
+                tempo(tempo_1);
+            } else if (pattern[counter] == 5) {
+                Std.mtof(notes[5]) => piano.freq;
+               tempo(tempo_2);
+            } else if (pattern[counter] == 6) {
+                Std.mtof(notes[6]) => piano.freq;
+                tempo(tempo_4);
+            } else if (pattern[counter] == 7) {
+                Std.mtof(notes[7]) => piano.freq;
+                tempo(tempo_6);
+            } else if (pattern[counter] == 8) {
+                Std.mtof(notes[8]) => piano.freq;
+                tempo(tempo_8);
+            } else {
+                Std.mtof(notes[9]) => piano.freq;
+                tempo(tempo_9); 
+            }
+            counter++;
+            <<<counter>>>;
+            0.5 => piano.gain;
         }
-        counter++;
-        <<<counter>>>;
-        
-        0.5 => piano.gain;
-        // Advance time
-        1 => piano.noteOn;
-        tempo => now;
-        1 => piano.noteOff;
+        cicle++;
     }
-    
+}
+
+function void tempo(dur t) {
+    1 => piano.noteOn;
+    t => now;
+    1 => piano.noteOff;
 }
 
 // MAIN PROGRAM
-playSounds();
+playNotes();
