@@ -9,6 +9,19 @@
 *
 * -Action-Reaction: Every force is an action that create an equal force (reaction) that go in the opposite
 *  direction to the first force. 
+*
+* Reflection: If you revise my code below, explicity I not coded the newtons laws, but instead I reflect on that.
+* First law: a note remains in constant movement until is moved by a force (maybe a finger). If the note is not
+* playing remains in silence. ¿What it means constant movement? We live in a dual world, the movement go in 
+* both directions... we can find movement in silence and movement in sound. 
+*
+* Second law: Every note played create an acceleration that is proportional to force of a finger. The mass
+* of my complete body is much more than a simple piano key, for that it's have to play the key
+* carefully. Use the force when is needed and note use the force just for feed your ego.
+*
+* Third law: Every act you commit generates a reaction with an equal force to the action that go in opposite 
+* direction. ¿How strong you push a piano key? It reacts with a sound when you play (action) a note. Be careful
+* no to brake the key. 
 */ 
 
 // Sound chain
