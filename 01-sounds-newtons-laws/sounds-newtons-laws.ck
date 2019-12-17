@@ -20,7 +20,7 @@
 * carefully. Use the force when is needed and not use the force just for feed your ego.
 *
 * Third law: Every act you commit generates a reaction with an equal force to the action that go in opposite 
-* direction. ¿How strong you push a piano key? It reacts with a sound when you play (action) a note. Be careful
+* direction. How strong you push a piano key? It reacts with a sound when you play (action) a note. Be careful
 * no to brake the key. 
 */ 
 
@@ -70,10 +70,10 @@ function void playNotes() {
                 tempo(tempo_3);
             } else if (pattern[counter] == 4) {
                 Std.mtof(notes[4]) => piano.freq;
-                tempo(tempo_1);
+                tempo(tempo_1); 
             } else if (pattern[counter] == 5) {
                 Std.mtof(notes[5]) => piano.freq;
-               tempo(tempo_2);
+               tempo(tempo_2); 
             } else if (pattern[counter] == 6) {
                 Std.mtof(notes[6]) => piano.freq;
                 tempo(tempo_4);
