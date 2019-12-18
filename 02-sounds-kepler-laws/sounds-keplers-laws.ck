@@ -13,6 +13,22 @@
 * -Third law: The orbital periods grow in a scaled way with the size of the
 *  ellipses such that the square of the orbital period is proportional to the 
 *  cube of the longest axis of the elliptical orbit.
+*
+* Reflection: Like in my first study drill, I didn't code kepler's laws. This 
+* writing is about just a point of view and a pleasure while I do it to improve 
+* my coding skills and reflect about something, is just that. 
+*
+* I will pass the laws to field of mind. Imagine the following: 
+* -First law: The human behaviour (planetary orbits) is attached to an energie
+* (sun) that spins him around her.
+*
+* -Second law: The human swep equa areas in equal times while turn around the 
+* energie (sun). The human (planet) repeat the behaviour (pattern) while it is 
+* near the energie (sun).
+*
+* -Third law: The human behaviour (orbital periods) grow in a scaled way with the 
+* size of the ellipse such that the square of the orbital period is proportinal to
+* the cube of the longest axis of the elliptical orbit (behaviour).
 */
  
 // notes: 50-0, 52-1, 54-2, 56-3, 59-4, 60-5
