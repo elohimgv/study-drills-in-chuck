@@ -14,11 +14,7 @@
 *  ellipses such that the square of the orbital period is proportional to the 
 *  cube of the longest axis of the elliptical orbit.
 */
-
-// Sound network 
-SqrOsc s => dac;
-//TriOsc t => dac;
-
+ 
 // notes: 50-0, 52-1, 54-2, 56-3, 59-4, 60-5
 // 62-6, 63-7, 64-8, 65-9
 [50, 52, 54, 56, 59, 60, 62, 63, 64, 65] @=> int notes[];
@@ -49,44 +45,31 @@ SqrOsc s => dac;
 0.8::second => dur tempo_8;
 0.9::second => dur tempo_9;
  
-// Sound gain
-0.4 => s.gain;
- 
-function void playNotes() {
+function void playMelody() {
     0 => int cicle;
     while (cicle < 2) {
         0 => int counter; 
         while (counter < pattern.cap()) {
             if (pattern[counter] == 0) {
-                Std.mtof(notes[0]) => s.freq;
-                tempo(tempo_2);
+                noteTriWave(tempo_2, notes[0]);
             } else if (pattern[counter] == 1) {
-                Std.mtof(notes[1]) => s.freq;
-                tempo(tempo_2);
+                noteSqrWave(tempo_2, notes[1]);
             } else if (pattern[counter] == 2) {
-                Std.mtof(notes[2]) => s.freq;
-                tempo(tempo_2);
+                noteTriWave(tempo_2, notes[2]);
             } else if (pattern[counter] == 3) {
-                Std.mtof(notes[3]) => s.freq;
-                tempo(tempo_2);
+                noteSqrWave(tempo_2, notes[3]);
             } else if (pattern[counter] == 4) {
-                Std.mtof(notes[4]) => s.freq;
-                tempo(tempo_2);
+                noteTriWave(tempo_2, notes[4]);
             } else if (pattern[counter] == 5) {
-                Std.mtof(notes[5]) => s.freq;
-                tempo(tempo_2);
+                noteTriWave(tempo_2, notes[5]);
             } else if (pattern[counter] == 6) {
-                Std.mtof(notes[6]) => s.freq;
-                tempo(tempo_2);
+                noteSqrWave(tempo_2, notes[6]);
             } else if (pattern[counter] == 7) {
-                Std.mtof(notes[7]) => s.freq;
-                tempo(tempo_2);
+                noteTriWave(tempo_2, notes[7]);
             } else if (pattern[counter] == 8) {
-                Std.mtof(notes[8]) => s.freq;
-                tempo(tempo_2);
+                noteTriWave(tempo_2, notes[8]);
             } else {
-                Std.mtof(notes[9]) => s.freq;
-                tempo(tempo_2); 
+                noteSqrWave(tempo_2, notes[9]);
             }
             counter++;
             <<<counter>>>;
@@ -95,12 +78,34 @@ function void playNotes() {
      }
 }
 
-function void tempo(dur t) {
+function void noteTriWave(dur t, int note) {
+    // initializing wave
+    TriOsc tri => dac;
+    // Sound gain
+    0.4 => tri.gain;
+    // Set frequency
+    Std.mtof(note) => tri.freq;
+    // Advance time
     t => now;
+    // Sound gain off
+    0.0 => tri.gain;
+}
+
+function void noteSqrWave(dur t, int note) {
+    // initializing wave
+    SqrOsc sqr => dac;
+    // Sound gain
+    0.4 => sqr.gain;
+    // Set frequency
+    Std.mtof(note) => sqr.freq;
+    // Advance time
+    t => now;
+    // Sound gain off
+    0.0 => sqr.gain;
 }
 
 // MAIN PROGRAM
-playNotes();
+playMelody();
 
  
  
