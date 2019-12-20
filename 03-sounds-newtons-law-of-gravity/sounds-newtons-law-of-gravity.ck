@@ -1,10 +1,15 @@
 // Author: Elohim
 // program name: sounds-newtons-law-of-gravity.ck
 
+
+// Sound chain
+PulseOsc pulse => Pan2 panning => dac;
+
 // pitch: 146-0, 164-1, 184-2, 207-3, 246-4, 261-5
 // 293-6, 311-7, 329-8, 349-9
 [146,164,184,207,246,261,293,311,329,349] @=> int myPitch[];
-// Pattern to play the notes.
+
+// Pattern to play the pitch.
 [1,4,5,0,0,9,
  1,4,5,4,0,8,
  1,4,5,8,0,8,
@@ -37,35 +42,63 @@
 0.8::second => dur tempo_8;
 0.9::second => dur tempo_9;
 
+// Setting gain of pitch
+0.4 => pulse.gain;
+// Setting duty cicle 
+Math.random2f(0.01, 0.7) => pulse.width;
+
 function void playMelody() {
     0 => int cicle;
-    while (cicle < 2) {
+    do {
         0 => int counter; 
         while (counter < pattern.cap()) {
             if (pattern[counter] == 0) {
-                
+                playPitch(tempo_3, myPitch[0]);
             } else if (pattern[counter] == 1) {
-                
+                playPitch(tempo_2, myPitch[1]);
             } else if (pattern[counter] == 2) {
-                
+                playPitch(tempo_2, myPitch[2]);
             } else if (pattern[counter] == 3) {
-                
+                playPitch(tempo_2, myPitch[3]);
             } else if (pattern[counter] == 4) {
-                
+                playPitch(tempo_6, myPitch[4]);
             } else if (pattern[counter] == 5) {
-                
+                playPitch(tempo_4, myPitch[5]);
             } else if (pattern[counter] == 6) {
-                
+                playPitch(tempo_2, myPitch[6]);
             } else if (pattern[counter] == 7) {
-                
+                playPitch(tempo_2, myPitch[7]);
             } else if (pattern[counter] == 8) {
-                
+                playPitch(tempo_2, myPitch[8]);
             } else {
-                
+                playPitch(tempo_6, myPitch[9]);
             }
+            // Pan position 
+            Math.random2f(-1.0, 1.0) => panning.pan;
             counter++;
-            <<<counter>>>;
-         }
-         cicle++;
-     }
+        }
+        cicle++;
+    } while (cicle < 1);
 }
+
+function void playPitch(dur tempo, int pitch) {
+    if (pitch == 146 || pitch == 164 || pitch == 184 || pitch == 207) {
+        2 *=> pitch;
+    } else {
+        2 /=> pitch;
+    }
+    pitch => pulse.freq;
+    tempo => now;
+}
+
+function void continuous() {
+    for (0 => int i; i < myPitch.cap(); i++) {
+        myPitch[i] => pulse.freq;
+        tempo_2 => now;
+    }        
+}
+
+// MAIN PROGRAM 
+continuous();
+playMelody();
+continuous();
