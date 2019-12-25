@@ -1,5 +1,22 @@
 // Author: Elohim
 // program name: sounds-newtons-law-of-gravity.ck
+/*
+* A short description of newtons law of gravity:
+*
+* Its law argue the capacity of attraction between 
+* bodies (mass) and said the force is proportional 
+* to its masses. However, it is inversely proportional 
+* to the square of the distance between the center of the bodies.
+*
+* My reflection: While a body is more solid, it has more
+* attraction. Solid is synonym of density of matter; more
+* density, more atoms with less space between them. Less
+* density, more atoms with more space between them. 
+*
+* What happend in human mind? If you have a solid mind, your 
+* mind is dense (matter) ...a little space to flow. Make your
+* own conclusions. 
+*/
 
 
 // Sound chain
