@@ -2,6 +2,17 @@
 // program name: sounds-energy-coservation-law.ck
 /*
 * A short description of energy conservation law:
+* Fisrt principle of thermodynamic that announced that
+* the total quantity of energy in any isolated system,
+* it remains unchanged over time, although energy can be 
+* transformed into another form of energy.
+*
+* Energy is not created or destroyed, it only transforms.
+*
+* My relfection: The total quantity of energy in a isolated
+* human, it remains unchanged over time, although energy can
+* be transformed into another form of energy. ¿What happend
+* if the human interact with others? 
 */
 
 // Sound chain UGens
