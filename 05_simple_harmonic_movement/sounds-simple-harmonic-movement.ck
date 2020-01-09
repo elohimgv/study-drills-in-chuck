@@ -2,8 +2,23 @@
 // program name: sounds-simple-harmonic-movement.ck
 /*
 * A short description of simple harmonic movement:
+* Describe the way in what an object is move outside
+* from your site, experimenting a corrective force 
+* that try to restore it to its place.
 *
-* My reflection: 
+* The corrective force always opposes the movement of
+* the object and increases proportionally with the 
+* distance to which is it is displaced. 
+*
+* Examples of this: swing, pendulum.
+*
+* My reflection: Suppose that the human try to find 
+* things outside from him. Like pursuit the happiness 
+* through to a new car, a new girlfriend, new friend, 
+* new adventure... all those actions provoke a back 
+* and forth movement, swinging from end to end. But
+* remember the corrective force, at the end you must
+* return to your state of balance.
 */
 
 // Sound chain
@@ -42,7 +57,8 @@ fun void playMelody() {
     0 => int cicle;
     // Loop to repeat the pattern
     while (cicle < 1) {
-        0 => int counter; 
+        0 => int counter;
+       // Pattern loop 
         while (counter < pattern.cap()) {
             if (pattern[counter] == 0) {
                 f[0] => wave.freq;
